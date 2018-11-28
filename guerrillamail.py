@@ -328,7 +328,7 @@ def cli(*args):
     settings = load_settings()
     session = GuerrillaMailSession(**settings)
     try:
-        output = get_command(args.command).invoke(session, args)
+        output = get_command(args.command).invoke(session, args).encode('utf-8')
     except GuerrillaMailException as e:
         print(e.message, file=sys.stderr)
     else:
